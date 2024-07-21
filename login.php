@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        $_SESSION['id_pengguna'] = $row['id_pengguna'];
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['jabatan'] = $row['jabatan'];
 

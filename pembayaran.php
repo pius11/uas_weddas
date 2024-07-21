@@ -2,97 +2,52 @@
 session_start();
 include 'koneksi.php';
 
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'kasir') {
-    header('Location: login.php');
-    exit;
-}
+// if (!isset($_SESSION['username']) || $_SESSION['role'] != 'kasir') {
+//     header('Location: login.php');
+//     exit;
+// }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cash = $_POST['cash'];
-    $grandTotal = $_POST['grandTotal'];
-    $change = $cash - $grandTotal;
-
-    if ($change < 0) {
-        echo "Uang tidak cukup!";
-        exit;
-    }
-
-    $keranjang = $_SESSION['keranjang'];
-    $customer = $_SESSION['customer'];
+    $total_harga = $_POST['grandTotal'];
+    $kode_produks = $_POST['kode_produk'];
+    $harga_juals = $_POST['harga_jual'];
+    $id_member = $_POST['id_member'];
     $tgl_transaksi = date('Y-m-d');
-    $id_pengguna = $_SESSION['username'];
-    $id_member = ($customer != 'umum') ? $customer : null;
+    $id_pengguna = $_SESSION['id_pengguna'];
+    $kembalian = $_POST['kembalian'];
+
+  
 
     // Simpan data transaksi utama ke tabel membeli
-    $query = "INSERT INTO membeli (tgl_transaksi, id_pengguna, id_member) 
-              VALUES ('$tgl_transaksi', '$id_pengguna', '$id_member')";
+    $query = "INSERT INTO membeli (tgl_transaksi,id_pengguna,id_member) VALUES ('$tgl_transaksi', '$id_pengguna', '$id_member')";
     $koneksi->query($query);
 
     // Ambil id_transaksi yang baru saja dimasukkan
     $id_transaksi = $koneksi->insert_id;
 
-    foreach ($keranjang as $kode_produk => $qty) {
-        if ($qty > 0) {
-            $query = "SELECT * FROM produk WHERE kode_produk='$kode_produk'";
-            $result = $koneksi->query($query);
-            $produk = $result->fetch_assoc();
-
-            $subtotal = $produk['harga_jual'] * $qty;
-
-            // Sesuaikan query INSERT dengan skema tabel beli_detail
-            $query = "INSERT INTO beli_detail (id_transaksi, kode_produk, harga_jual, total_harga) 
-                      VALUES ('$id_transaksi', '$kode_produk', '{$produk['harga_jual']}', '$subtotal')";
-            $koneksi->query($query);
-        }
+    foreach ($kode_produks as $index => $produk) {
+        $query = "INSERT INTO beli_detail (id_transaksi,kode_produk,harga_jual,total_harga,kembalian) VALUES ('$id_transaksi','$kode_produks[$index]','$harga_juals[$index]','$total_harga','$kembalian')";
+        $koneksi->query($query);
     }
 
-    // Mengambil nama kasir dari database
-    $query_kasir = "SELECT nama_pengguna FROM pengguna WHERE user_name='$id_pengguna'";
-    $result_kasir = $koneksi->query($query_kasir);
-    $kasir_info = $result_kasir->fetch_assoc();
-    $nama_kasir = $kasir_info['nama_pengguna'];
-
-    echo "<h1>Transaksi Berhasil!</h1>";
-    echo "<p>Tanggal: $tgl_transaksi</p>";
-    echo "<p>Kasir: $nama_kasir</p>";
-    echo "<p>Customer: $customer</p>";
-    echo "<table border='1'>";
-    echo "<tr><th>Kode Produk</th><th>Nama Produk</th><th>Harga Satuan</th><th>Qty</th><th>Subtotal</th></tr>";
-
-    foreach ($keranjang as $kode_produk => $qty) {
-        if ($qty > 0) {
-            $query = "SELECT * FROM produk WHERE kode_produk='$kode_produk'";
-            $result = $koneksi->query($query);
-            $produk = $result->fetch_assoc();
-
-            $subtotal = $produk['harga_jual'] * $qty;
-
-            echo "<tr>";
-            echo "<td>" . $kode_produk . "</td>";
-            echo "<td>" . $produk['nama_produk'] . "</td>";
-            echo "<td>" . $produk['harga_jual'] . "</td>";
-            echo "<td>" . $qty . "</td>";
-            echo "<td>" . $subtotal . "</td>";
-            echo "</tr>";
-        }
-    }
-
-    echo "</table>";
-    echo "<h2>Grand Total: $grandTotal</h2>";
-    echo "<h2>Cash: $cash</h2>";
-    echo "<h2>Change: $change</h2>";
-
-    echo "<a href='index.php'>Kembali ke Beranda</a>";
+    header("location:historyPembayaran.php");
 } else {
-    $query = "SELECT * FROM produk";
-    $result = $koneksi->query($query);
+    $queryPembeli = "SELECT * FROM pembeli";
+    $queryProduct = "SELECT * FROM produk";
+    $resultPembeli = $koneksi->query($queryPembeli);
+    $resultProduct = $koneksi->query($queryProduct);
+    $pembeli_list = [];
     $produk_list = [];
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $resultPembeli->fetch_assoc()) {
+        $pembeli_list[] = $row;
+    }
+    while ($row = $resultProduct->fetch_assoc()) {
         $produk_list[] = $row;
     }
     ?>
 
-    <form method="POST" action="">
+    <form method="POST">
         <h1>Pembayaran</h1>
         <table border="1">
             <tr>
@@ -101,40 +56,92 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <th>Harga Satuan</th>
                 <th>Qty</th>
             </tr>
-            <?php foreach ($produk_list as $produk): ?>
-                <tr>
-                    <td><?php echo $produk['kode_produk']; ?></td>
-                    <td><?php echo $produk['nama_produk']; ?></td>
-                    <td><?php echo $produk['harga_jual']; ?></td>
-                    <td><input type="number" name="keranjang[<?php echo $produk['kode_produk']; ?>]" value="0" min="0"></td>
+            <?php foreach ($produk_list as $i => $produk): ?>
+                <tr class="produks">
+                    <td><?= $produk['kode_produk']; ?></td>
+                    <td><?= $produk['nama_produk']; ?></td>
+                    <td><?= $produk['harga_jual']; ?></td>
+                    <td>
+                        <input type="number" name="keranjang[<?php echo $produk['kode_produk']; ?>]" value="0" min="0">
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </table>
         <br>
+        <label for="member">Member:</label>
+        <select name="id_member" id="member" required>
+            <option value="">Select member</option>
+            <?php foreach ($pembeli_list as $member) : ?>
+                <option value="<?= $member['id_member']; ?>"><?= $member['nama_member']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <br>
         <label for="cash">Cash:</label>
         <input type="number" name="cash" id="cash" required>
         <br>
-        <input type="hidden" name="grandTotal" id="grandTotal" value="0">
+        <label for="grandTotal">Total Harga:</label>
+        <input type="number" name="grandTotal" id="grandTotal" value="0" readonly>
+        <br>
+        <label for="kembalian">Kembalian:</label>
+        <input type="number" name="kembalian" id="kembalian" value="0" readonly>
+        <br>
+        <div id="hiddenInputs"></div>
         <button type="submit">Bayar</button>
     </form>
 
     <script>
-        const inputs = document.querySelectorAll('input[type="number"]');
-        const grandTotalInput = document.getElementById('grandTotal');
+    let total_harga_satuan = [];
+    let satuan = [];
+    let satuan_kode = [];
 
-        inputs.forEach(input => {
-            input.addEventListener('input', calculateGrandTotal);
-        });
+    const produks = document.querySelectorAll('.produks');
+    let grandTotalInput = document.getElementById('grandTotal');
+    let kembalianInput = document.getElementById('kembalian');
+    let cashInput = document.getElementById('cash');
+    let hiddenInputs = document.getElementById('hiddenInputs');
 
-        function calculateGrandTotal() {
-            let grandTotal = 0;
-            inputs.forEach(input => {
-                const qty = parseInt(input.value);
-                const harga = parseInt(input.closest('tr').querySelector('td:nth-child(3)').innerText);
-                grandTotal += qty * harga;
-            });
-            grandTotalInput.value = grandTotal;
+    cashInput.addEventListener('keyup', function(){
+        let kembalian = 0
+        if (parseInt(cashInput.value) < parseInt(grandTotalInput.value)) {
+            kembalian = 0
+        } else {
+            kembalian = cashInput.value - grandTotalInput.value
         }
+        kembalianInput.value = kembalian
+    })
+
+    produks.forEach(produk => {
+        produk.querySelector('input').addEventListener('keyup', function() {
+            let kode = produk.querySelector('td:nth-child(1)').innerText;
+            let harga = parseFloat(produk.querySelector('td:nth-child(3)').innerText);
+            let qty = parseInt(produk.querySelector('input').value);
+            let total_harga = harga * qty;
+
+            total_harga_satuan = total_harga_satuan.filter(harga_satuan => harga_satuan.kode_produk !== kode);
+            total_harga_satuan.push({ kode_produk: kode, harga: total_harga });
+            satuan = total_harga_satuan.map(harga_satuan => harga_satuan.harga);
+            satuan_kode = total_harga_satuan.map(harga_satuan => harga_satuan.kode_produk);
+
+            let grandTotal = satuan.reduce((acc, curr) => acc + curr, 0);
+            grandTotalInput.value = grandTotal;
+
+            hiddenInputs.innerHTML = '';
+            total_harga_satuan.forEach(item => {
+                let kodeInput = document.createElement('input');
+                kodeInput.type = 'hidden';
+                kodeInput.name = 'kode_produk[]';
+                kodeInput.value = item.kode_produk;
+
+                let hargaInput = document.createElement('input');
+                hargaInput.type = 'hidden';
+                hargaInput.name = 'harga_jual[]';
+                hargaInput.value = item.harga;
+
+                hiddenInputs.appendChild(kodeInput);
+                hiddenInputs.appendChild(hargaInput);
+            });
+        });
+    });
     </script>
     <?php
 }

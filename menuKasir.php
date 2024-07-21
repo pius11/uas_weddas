@@ -18,6 +18,7 @@ if (!isset($_SESSION['user_name']) || $_SESSION['jabatan'] != 'kasir') {
     <tr>
         <th><a href="src/produk/list.php">produk</a></th>
         <th><a href="src/member/list.php">member</a></th>
+        <th><a href="historyPembayaran.php">history pembayaran</a></th>
         <th><a href="logout.php">Logout</a></th>
     </tr>
     </table>

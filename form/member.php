@@ -28,8 +28,7 @@
         <td><input type="number" name="nohp" ></td>
     </tr>
     <tr>
-        
-        <td><input type="submit" value="kirim"></td>
+        <td><button type="submit">Kirim</button></td>
     </tr>
    </table>
     </form>
