@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>History Pembayaran</title>
+    <title>LIST PEGAWAI</title>
 
     <style>
     @keyframes fadeIn {
@@ -87,8 +87,8 @@
 </head>
 <body>
     <h2>LIST PEGAWAI</h2>
-    <a href="../../form/pengguna.php" class="btn btn-primary">instert data</a>
-    <br>
+    <a href="../../form/pengguna.php" class="btn btn-primary">Instert Data</a>
+    
     <table border="1">
     <tr>
         <th>no</th>
@@ -132,7 +132,7 @@
            echo "<b>$i</b> | ";
         }
     
-    echo "<p>total buku : <b>$jmldata</b> buah</p>";
+    echo "<p>Total User : <b>$jmldata</b> Orang</p>";
 
     //sesuaikan query dengan posisi batas
     $query = "select * from pengguna LIMIT $posisi,$batas";
@@ -161,5 +161,7 @@
     }
     ?>
     </table>
+    <br>
+    <a href="http://localhost/pos/uas_weddas/menuAdmin.php" class="btn btn-secondary">kembali</a>
 </body>
 </html>

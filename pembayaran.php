@@ -116,6 +116,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 background-color: #45a049;
             }
 
+            .btn-primary {
+            background-color: #d147a3;
+            border-color: #d147a3;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #c13592;
+            border-color: #c13592;
+        }
+
+        .form-group, .form-balik {
+            margin-bottom: 20px;
+        }
+        .form-group, .form-balik label {
+            color: #555;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group, .form-balik textarea {
+            resize: vertical;
+        }
+        .btn-primary {
+            background-color: #d147a3;
+            border-color: #d147a3;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #c13592;
+            border-color: #c13592;
+        }
+
             @media (max-width: 600px) {
             table, th, td {
                 font-size: 14px;
@@ -177,6 +217,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div id="hiddenInputs"></div>
             <button type="submit">Bayar</button>
         </form>
+        <br>
+        <div class="form-balik">
+            <a href="http://localhost/pos/uas_weddas/historyPembayaran.php" class="btn btn-primary">kembali</a>
+        </div>
     </div>
 
     <script>

@@ -29,8 +29,10 @@ if (!isset($_SESSION['user_name']) || $_SESSION['jabatan'] != 'admin') {
         flex-direction: column;
         align-items: center;
         animation: fadeIn 1s ease-out;
+        background-image: url(IMG/iqbal.jpg);
+        background-size: 1920px 1080px;
     }
-
+    
     .container-fluid {
         align-items: center;
     }

@@ -30,10 +30,10 @@
             color: #d147a3;
             margin-bottom: 20px;
         }
-        .form-group {
+        .form-group, .form-balik {
             margin-bottom: 20px;
         }
-        .form-group label {
+        .form-group, .form-balik label {
             color: #555;
         }
         .form-group input,
@@ -43,7 +43,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        .form-group textarea {
+        .form-group, .form-balik textarea {
             resize: vertical;
         }
         .btn-primary {
@@ -96,6 +96,9 @@
                 <input type="submit" class="btn btn-primary" value="kirim">
             </div>
         </form>
+        <div class="form-balik">
+            <a href="http://localhost/pos/uas_weddas/src/pengguna/list.php" class="btn btn-primary">kembali</a>
+        </div>
     </div>
-</body>
+</body> 
 </html>

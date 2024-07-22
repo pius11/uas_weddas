@@ -99,7 +99,7 @@ while ($row = $resultBeliDetail->fetch_assoc()) {
 <body>
     <h2>LIST TRANSAKSI</h2>
     <br>
-    <a href="http://localhost/uas_weddas/pembayaran.php" class="btn">Insert Transaksi</a>
+    <a href="http://localhost/pos/uas_weddas/pembayaran.php" class="btn">Insert Transaksi</a>
     <br>
     <table border="1">
     <tr>
@@ -111,16 +111,22 @@ while ($row = $resultBeliDetail->fetch_assoc()) {
         <th>total_harga</th>
         <th>kembalian</th>
     </tr>
-    <?php foreach ($beli_detail_list as $detail) : ?>
-        <tr>
-            <td><?= $detail['id_detail']; ?></td>
-            <td><?= $detail['kode_produk']; ?></td>
-            <td><?= $detail['nama_member']; ?></td>
-            <td><?= $detail['nama_produk']; ?></td>
-            <td><?= $detail['harga_jual']; ?></td>
-            <td><?= $detail['total_harga']; ?></td>
-            <td><?= $detail['kembalian']; ?></td>
-        </tr>
+    <div>
+    <br>
+    <a href="http://localhost/pos/uas_weddas/menuKasir.php" class="btn btn-secondary">kembali</a>
+</div>
+<?php foreach ($beli_detail_list as $detail) : ?>
+    <tr>
+        <td><?= $detail['id_detail']; ?></td>
+        <td><?= $detail['kode_produk']; ?></td>
+        <td><?= $detail['nama_member']; ?></td>
+        <td><?= $detail['nama_produk']; ?></td>
+        <td><?= $detail['harga_jual']; ?></td>
+        <td><?= $detail['total_harga']; ?></td>
+        <td><?= $detail['kembalian']; ?></td>
+    </tr>
     <?php endforeach; ?>
+    
+    
 </body>
 </html>

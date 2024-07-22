@@ -181,5 +181,14 @@
     }
     ?>
     </table>
+    <br>
+    <!-- <button class="btn btn-secondary" onclick="goBack()">Kembali</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script> -->
+    <a href="http://localhost/pos/uas_weddas/menuAdmin.php" class="btn btn-secondary">kembali</a>
 </body>
 </html>

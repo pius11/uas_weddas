@@ -184,5 +184,8 @@
     }
     ?>
     </table>
+    <br>
+
+    <a href="http://localhost/pos/uas_weddas/menuAdmin.php" class="btn btn-secondary">kembali</a>
 </body>
 </html>
