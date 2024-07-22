@@ -198,10 +198,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </table>
             <br>
             <label for="member">Member:</label>
-            <select name="id_member" id="member" required>
+            <select name="id_member" id="member">
                 <option value="">Select member</option>
                 <?php foreach ($pembeli_list as $member) : ?>
-                    <option value="<?= $member['id_member']; ?>"><?= $member['nama_member']; ?></option>
+                <option value="<?= $member['id_member']; ?>"><?= $member['nama_member']; ?></option>
                 <?php endforeach; ?>
             </select>
             <br>

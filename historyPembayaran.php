@@ -1,12 +1,17 @@
 <?php
 include "koneksi.php";
 
-$queryBeliDetail = "SELECT beli_detail.*, produk.*,membeli.*,pembeli.* FROM beli_detail JOIN membeli ON beli_detail.id_transaksi = membeli.id_transaksi JOIN produk ON beli_detail.kode_produk = produk.kode_produk JOIN pembeli ON membeli.id_member = pembeli.id_member;";
+$queryBeliDetail = "SELECT beli_detail.*, produk.*, membeli.*, COALESCE(pembeli.nama_member, 'Tidak Ada') AS nama_member 
+                    FROM beli_detail 
+                    JOIN membeli ON beli_detail.id_transaksi = membeli.id_transaksi 
+                    JOIN produk ON beli_detail.kode_produk = produk.kode_produk 
+                    LEFT JOIN pembeli ON membeli.id_member = pembeli.id_member;";
 $resultBeliDetail = $koneksi->query($queryBeliDetail);
 $beli_detail_list = [];
 while ($row = $resultBeliDetail->fetch_assoc()) {
     $beli_detail_list[] = $row;
 }
+
 ?>
 
 <!DOCTYPE html>
