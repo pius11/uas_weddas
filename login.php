@@ -33,7 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Login</title>
     <style>
@@ -116,10 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>Login</h1>
         <form method="POST" action="">
             <label>Username:</label>
-            <input type="text" name="user_name" required>
+            <input type="text" name="user_name" placeholder="User Name" required>
             <label>Password:</label>
-            <input type="password" name="password" required>
-            <button type="submit">Login</button>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">
+            Login <i class="bi bi-box-arrow-in-right"></i>
+            </button>
         </form>
         <?php if (!empty($error_message)): ?>
             <div class="error-message"><?php echo $error_message; ?></div>

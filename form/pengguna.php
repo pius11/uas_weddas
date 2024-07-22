@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -57,6 +59,7 @@
             background-color: #c13592;
             border-color: #c13592;
         }
+        
     </style>
 </head>
 <body>
@@ -65,15 +68,15 @@
         <form action="../src/pengguna/insert.php" method="post">
             <div class="form-group">
                 <label for="user_name">User Name</label>
-                <input type="text" id="user_name" name="user_name">
+                <input type="text" id="user_name" name="user_name" placeholder="User Name">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
                 <label for="nama_pengguna">Nama Lengkap</label>
-                <input type="text" id="nama_pengguna" name="nama_pengguna">
+                <input type="text" id="nama_pengguna" name="nama_pengguna" placeholder="Nama Lengkap">
             </div>
             <div class="form-group">
                 <label>Jabatan</label>
@@ -90,14 +93,17 @@
             </div>
             <div class="form-group">
                 <label for="nohp_pengguna">No Handphone</label>
-                <input type="number" id="nohp_pengguna" name="nohp_pengguna">
+                <input type="number" id="nohp_pengguna" name="nohp_pengguna" placeholder="No Handphone">
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="kirim">
+            <button type="submit" class="btn btn-primary btn-with-icon">
+            Kirim  <i class="bi bi-floppy"></i>
             </div>
         </form>
         <div class="form-balik">
-            <a href="http://localhost/pos/uas_weddas/src/pengguna/list.php" class="btn btn-primary">kembali</a>
+            <a href="../src/pengguna/list.php" class="btn btn-primary">Kembali
+            <i class="bi bi-chevron-double-left"></i>
+            </a>
         </div>
     </div>
 </body> 

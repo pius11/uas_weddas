@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -65,25 +66,29 @@
         <form action="../src/produk/insert.php" method="post">
             <div class="form-group">
                 <label for="kode_produk">Kode Produk</label>
-                <input type="text" id="kode_produk" name="kode_produk">
+                <input type="text" id="kode_produk" name="kode_produk" placeholder="Kode Produk">
             </div>
             <div class="form-group">
                 <label for="nama_produk">Nama Produk</label>
-                <input type="text" id="nama_produk" name="nama_produk">
+                <input type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk">
             </div>
             <div class="form-group">
                 <label for="satuan">Satuan</label>
-                <input type="text" id="satuan" name="satuan">
+                <input type="text" id="satuan" name="satuan" placeholder="PCS / PAK / BAL / DUS">
             </div>
             <div class="form-group">
                 <label for="harga_jual">Harga Jual</label>
-                <input type="number" id="harga_jual" name="harga_jual">
+                <input type="number" id="harga_jual" name="harga_jual" placeholder="Harga Jual">
             </div>
-            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="submit" class="btn btn-primary">Kirim
+            <i class="bi bi-floppy"></i>
+            </button>
         </form>
         <br>
         <div class="form-balik">
-            <a href="http://localhost/pos/uas_weddas/src/produk/list.php" class="btn btn-primary">kembali</a>
+            <a href="../src/produk/list.php" class="btn btn-primary">Kembali
+            <i class="bi bi-chevron-double-left"></i>
+            </a>
         </div>
     </div>
 </body>

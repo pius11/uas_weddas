@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Registrasi Member</title>
@@ -65,25 +66,29 @@
         <form action="../src/member/insert.php" method="post">
             <div class="form-group">
                 <label for="nama_member">Nama</label>
-                <input type="text" id="nama_member" name="nama_member" class="form-control" required>
+                <input type="text" id="nama_member" name="nama_member" class="form-control" placeholder="Nama" required>
             </div>
             <div class="form-group">
                 <label for="nik">NIK</label>
-                <input type="text" id="nik" name="nik" class="form-control" required>
+                <input type="text" id="nik" name="nik" class="form-control" placeholder="NIK" required>
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
-                <textarea id="alamat" name="alamat" class="form-control" rows="3" required></textarea>
+                <textarea id="alamat" name="alamat" class="form-control" rows="3" placeholder="Alamat Rumah" required></textarea>
             </div>
             <div class="form-group">
                 <label for="nohp">No Handphone</label>
-                <input type="number" id="nohp" name="nohp" class="form-control" required>
+                <input type="number" id="nohp" name="nohp" class="form-control" placeholder="No Handphone" required>
             </div>
-            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="submit" class="btn btn-primary">Kirim
+            <i class="bi bi-floppy"></i>
+            </button>
         </form>
         <br>
         <div class="form-balik">
-            <a href="http://localhost/pos/uas_weddas/src/member/list.php" class="btn btn-primary">kembali</a>
+            <a href="../src/member/list.php" class="btn btn-primary">Kembali
+            <i class="bi bi-chevron-double-left"></i>
+            </a>
         </div>
     </div>
 </body>

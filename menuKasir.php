@@ -11,6 +11,7 @@ if (!isset($_SESSION['user_name']) || $_SESSION['jabatan'] != 'kasir') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Menu Kasir</title>
@@ -39,6 +40,9 @@ if (!isset($_SESSION['user_name']) || $_SESSION['jabatan'] != 'kasir') {
         font-size: 30px;
         font-weight: bold;
     }
+    .navbar-nav .nav-link:hover {
+        color: #d147a3; /* Pink color on hover */
+    }
     </style>
 </head>
 <body>
@@ -51,16 +55,24 @@ if (!isset($_SESSION['user_name']) || $_SESSION['jabatan'] != 'kasir') {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="src/produk/list.php">Produk</a>
+                        <a class="nav-link" href="src/produk/list.php">Produk
+                        <i class="bi bi-basket"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="src/member/list.php">Member</a>
+                        <a class="nav-link" href="src/member/list.php">Member
+                        <i class="bi bi-people"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="historyPembayaran.php">History Pembayaran</a>
+                        <a class="nav-link" href="historyPembayaran.php">History Pembayaran
+                        <i class="bi bi-clock-history"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
+                        <a class="nav-link" href="logout.php">Logout
+                        <i class="bi bi-box-arrow-right"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
