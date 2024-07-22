@@ -87,7 +87,7 @@
 </head>
 <body>
     <h2>LIST PEGAWAI</h2>
-    <a href="../../form/pengguna.php" class="btn btn-primary">Instert Data</a>
+    <a href="../../form/pengguna.php" class="btn btn-primary">Insert Data</a>
     
     <table border="1">
     <tr>

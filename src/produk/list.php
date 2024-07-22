@@ -114,7 +114,7 @@
     <h2>LIST PRODUK</h2>
     <br>
     <br>
-    <a href="../../form/produk.php" class="btn btn-primary">instert data</a>
+    <a href="../../form/produk.php" class="btn btn-primary">Insert Data</a>
     <table border="1">
     <tr>
         <th>no</th>
