@@ -109,13 +109,13 @@
         <form action="edit.php" method="post">
             <input type="hidden" name="id_pengguna" value="<?php echo $d['id_pengguna'];?>">
             <label for="user_name">User Name</label>
-            <input type="text" id="user_name" name="user_name" value="<?php echo $d['user_name'];?>">
+            <input type="text" id="user_name" name="user_name" placeholder="User Name" value="<?php echo $d['user_name'];?>">
             
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" value="<?php echo $d['password'];?>">
+            <input type="password" id="password" name="password" placeholder="Password" value="<?php echo $d['password'];?>">
             
             <label for="nama_pengguna">Nama Lengkap</label>
-            <input type="text" id="nama_pengguna" name="nama_pengguna" value="<?php echo $d['nama_pengguna'];?>">
+            <input type="text" id="nama_pengguna" name="nama_pengguna" placeholder="Nama Lengkap" value="<?php echo $d['nama_pengguna'];?>">
             
             <div class="form-group">
                 <label>Jabatan</label>
@@ -126,7 +126,7 @@
             </div>
             <br>
             <label for="nohp_pengguna">No Handphone</label>
-            <input type="number" id="nohp_pengguna" name="nohp_pengguna" value="<?php echo $d['nohp_pengguna'];?>">
+            <input type="number" id="nohp_pengguna" name="nohp_pengguna" placeholder="No Handphone" value="<?php echo $d['nohp_pengguna'];?>">
             
             <button type="submit">Kirim
             <i class="bi bi-floppy"></i>
