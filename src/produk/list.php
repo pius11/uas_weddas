@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,7 +139,6 @@
     
     <?php
     include "../../koneksi.php";
-    session_start();
     $no=1;
     // batas, cek halaman dan posisi data
     $batas = 10;
