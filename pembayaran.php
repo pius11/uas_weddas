@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br>
             <label for="member">Member:</label>
             <select name="id_member" id="member">
-                <option value="">Select member</option>
+                <option value="0">Select member</option>
                 <?php foreach ($pembeli_list as $member) : ?>
                 <option value="<?= $member['id_member']; ?>"><?= $member['nama_member']; ?></option>
                 <?php endforeach; ?>
